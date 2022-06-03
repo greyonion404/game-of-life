@@ -4,7 +4,8 @@ let grid, columns, rows;
 let h, w;
 let buttonStartX = 0, fps = 20, nodeSize = 12, density = 100;
 let currentRow = 0, currentColumn = 0;
-let slider;
+let fpsSlider;
+let randomizeSlider;
 
 
 
@@ -93,7 +94,6 @@ function createRandomizeButton() {
 function displayText() {
   stroke(20);
   fill(0);
-  rect(buttonStartX, 50, 210, 60);
   rect(0, 0, w, 40);
   fill(230);
   let state, action;
@@ -108,6 +108,28 @@ function displayText() {
   strokeWeight(1);
 }
 
+function createSliderPrompt(prompt, h, w, x, y) {
+  button = createButton('Randomize');
+  button.position(x, y);
+  button.size(100, 25);
+  button.style('background-color', color(0));
+  button.style('color', color(230));
+  button.style('font-weight', 600);
+  button.style('border-radius: 5px;');
+}
+
+function createSliderContainer() {
+
+  let width = floor(windowWidth) / 3;
+  fpsSlider = createSlider(1, 60, 60);
+  fpsSlider.position(w / 2 - width / 2, h - 30);
+  fpsSlider.style('width', `${width}px`);
+
+  randomizeSlider = createSlider(1, 99, 99);
+  randomizeSlider.position(w / 2 - width / 2, h - 60);
+  randomizeSlider.style('width', `${width}px`);
+
+}
 
 function updateGridFromInput() {
 
@@ -145,13 +167,7 @@ function setup() {
   createPlayPauseButton();
   createActionButton();
   createRandomizeButton();
-
-  slider = createSlider(1, 60, 60);
-  slider.position(w / 2 - 40, h - 50);
-  slider.style('width', '80px');
-
-
-
+  createSliderContainer();
   columns = floor(w / nodeSize);
   rows = floor(h / nodeSize);
   grid = makeArray(columns, rows);
@@ -159,7 +175,8 @@ function setup() {
 }
 function draw() {
 
-  frameRate(slider.value());
+  frameRate(fpsSlider.value());
+  density = randomizeSlider.value();
   background(0);
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
