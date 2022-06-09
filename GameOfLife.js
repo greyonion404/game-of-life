@@ -93,7 +93,7 @@ function createRandomizeButton() {
 }
 function displayText() {
   stroke(20);
-  fill(0);
+  fill(23, 21, 21);
   rect(0, 0, w, 40);
   fill(230);
   let state, action;
@@ -108,25 +108,40 @@ function displayText() {
   strokeWeight(1);
 }
 
-function createSliderPrompt(prompt, h, w, x, y) {
-  button = createButton('Randomize');
-  button.position(x, y);
-  button.size(100, 25);
-  button.style('background-color', color(0));
-  button.style('color', color(230));
-  button.style('font-weight', 600);
-  button.style('border-radius: 5px;');
+
+
+function createButtonContainer() {
+
+  let width = 250;
+  let xPosition = w / 2 - width / 2;
+  let container = createButton("");
+  container.position(xPosition, 45);
+  container.size(width, 65);
+  container.style('background-color', color(220));
+  container.style('color', color(230));
+  container.style('font-weight', 600);
+  container.style('border-radius: 5px;');
+
 }
-
 function createSliderContainer() {
-
+  
   let width = floor(windowWidth) / 3;
+  let xPosition = w / 2 - width / 2;
+  let container = createButton("");
+  container.position(xPosition - 10, h-70);
+  container.size(width + 20, 65);
+  container.style('background-color', color(220));
+  container.style('color', color(230));
+  container.style('font-weight', 600);
+  container.style('border-radius: 5px;');
+
+
   fpsSlider = createSlider(1, 60, 60);
-  fpsSlider.position(w / 2 - width / 2, h - 30);
+  fpsSlider.position(xPosition, h - 30);
   fpsSlider.style('width', `${width}px`);
 
-  randomizeSlider = createSlider(1, 99, 99);
-  randomizeSlider.position(w / 2 - width / 2, h - 60);
+  randomizeSlider = createSlider(1, 100, 100);
+  randomizeSlider.position(xPosition, h - 60);
   randomizeSlider.style('width', `${width}px`);
 
 }
@@ -163,6 +178,7 @@ function setup() {
   var canvas = createCanvas(w, h);
   canvas.style('display', 'block')
   buttonStartX = w / 2 - 100;
+  createButtonContainer();
   createEmptyButton();
   createPlayPauseButton();
   createActionButton();
@@ -177,13 +193,13 @@ function draw() {
 
   frameRate(fpsSlider.value());
   density = randomizeSlider.value();
-  background(0);
+  background(25, 33, 41);
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
       let colPos = i * nodeSize;
       let rowPos = j * nodeSize;
       if (grid[i][j] == 1) {
-        fill(0);
+        fill(62, 76, 89);
         stroke(255);
         rect(colPos, rowPos, nodeSize - 1, nodeSize - 1);
       }
