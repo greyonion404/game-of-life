@@ -92,8 +92,8 @@ function createRandomizeButton() {
   button.mousePressed(makeRandom);
 }
 function displayText() {
-  stroke(20);
-  fill(23, 21, 21);
+  stroke(114,137,218);
+  fill(25, 33, 41);
   rect(0, 0, w, 40);
   fill(230);
   let state, action;
@@ -117,7 +117,7 @@ function createButtonContainer() {
   let container = createButton("");
   container.position(xPosition, 45);
   container.size(width, 65);
-  container.style('background-color', color(220));
+  container.style('background-color', color(40,43,48));
   container.style('color', color(230));
   container.style('font-weight', 600);
   container.style('border-radius: 5px;');
@@ -130,7 +130,7 @@ function createSliderContainer() {
   let container = createButton("");
   container.position(xPosition - 10, h-70);
   container.size(width + 20, 65);
-  container.style('background-color', color(220));
+  container.style('background-color', color(40,43,48));
   container.style('color', color(230));
   container.style('font-weight', 600);
   container.style('border-radius: 5px;');
@@ -200,7 +200,7 @@ function draw() {
       let rowPos = j * nodeSize;
       if (grid[i][j] == 1) {
         fill(62, 76, 89);
-        stroke(255);
+        stroke(114,137,218);
         rect(colPos, rowPos, nodeSize - 1, nodeSize - 1);
       }
     }
