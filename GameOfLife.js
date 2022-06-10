@@ -8,6 +8,9 @@ let fpsSlider, randomizeSlider;
 let playPauseButton, actionButton, randomizeButton, emptyButton;
 let buttonContainer, sliderContainer;
 
+let buttonHeight = 25, buttonWidth = 100;
+let buttonContainerHeight = 100, buttonContainerWidth = 100;
+
 
 function getAnimationEmoji() {
   return `${!isAnimating ? "▶" : " | | "}`;
@@ -35,6 +38,7 @@ function toggleAnimation() {
 function toggleDraw() {
   isAnimating = false;
   isDrawable = !isDrawable;
+  playPauseButton.html(getAnimationEmoji());
   actionButton.html(getDrawEmoji());
 }
 
@@ -70,7 +74,7 @@ function generateRandomizedGrid() {
 function createPlayPauseButton() {
   playPauseButton = createButton(getAnimationEmoji());
   playPauseButton.position(buttonStartX, 50);
-  playPauseButton.size(100, 25);
+  playPauseButton.size(buttonWidth, buttonHeight);
   playPauseButton.style('background-color', color(0));
   playPauseButton.style('color', color(230));
   playPauseButton.style('font-weight', 600);
@@ -81,7 +85,7 @@ function createPlayPauseButton() {
 function createActionButton() {
   actionButton = createButton(getDrawEmoji());
   actionButton.position(buttonStartX + 110, 50);
-  actionButton.size(100, 25);
+  actionButton.size(buttonWidth, buttonHeight);
   actionButton.style('background-color', color(0));
   actionButton.style('color', color(230));
   actionButton.style('font-weight', 600);
@@ -92,7 +96,7 @@ function createActionButton() {
 function createEmptyButton() {
   emptyButton = createButton('⦰');
   emptyButton.position(buttonStartX, 80);
-  emptyButton.size(100, 25);
+  emptyButton.size(buttonWidth, buttonHeight);
   emptyButton.style('background-color', color(0));
   emptyButton.style('color', color(230));
   emptyButton.style('font-weight', 600);
@@ -102,7 +106,7 @@ function createEmptyButton() {
 function createRandomizeButton() {
   randomizeButton = createButton(getRandomButtonEmoji());
   randomizeButton.position(buttonStartX + 110, 80);
-  randomizeButton.size(100, 25);
+  randomizeButton.size(buttonWidth, buttonHeight);
   randomizeButton.style('background-color', color(0));
   randomizeButton.style('color', color(230));
   randomizeButton.style('font-weight', 600);
@@ -114,10 +118,12 @@ function createRandomizeButton() {
 
 function createButtonContainer() {
   let width = 250;
+  let height = 65;
   let xPosition = w / 2 - width / 2;
+  let yPosition = 10;
   buttonContainer = createButton("");
-  buttonContainer.position(xPosition, 45);
-  buttonContainer.size(width, 65);
+  buttonContainer.position(xPosition, yPosition);
+  buttonContainer.size(width, height);
   buttonContainer.style('background-color', color(40, 43, 48));
   buttonContainer.style('color', color(230));
   buttonContainer.style('font-weight', 600);
