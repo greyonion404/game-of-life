@@ -36,7 +36,7 @@ function toggleAnimation() {
   playPauseButton.html(getAnimationEmoji());
 }
 function toggleDraw() {
-  isAnimating = false;
+  // isAnimating = false;
   isDrawable = !isDrawable;
   playPauseButton.html(getAnimationEmoji());
   actionButton.html(getDrawEmoji());
