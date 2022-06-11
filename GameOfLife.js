@@ -3,6 +3,7 @@ let isDrawable = true;
 let grid, columns, rows;
 let h, w;
 let buttonStartX = 0, fps = 20, nodeSize = 12, density = 72;
+let offsetY = 60, offsetYFromBottom = 90;
 let currentRow = 0, currentColumn = 0;
 let fpsSlider, randomizeSlider;
 let playPauseButton, actionButton, randomizeButton, emptyButton;
@@ -178,7 +179,7 @@ function updateGridFromInput() {
 
   if (mouseX > 0 && mouseX < w && mouseY > 0 && mouseY < h) {
     currentColumn = floor(mouseX / nodeSize);
-    currentRow = floor(mouseY / nodeSize);
+    currentRow = floor((mouseY - offsetY) / nodeSize);
   }
   if (currentRow != rows && currentColumn != columns) {
     if (isDrawable && mouseIsPressed) grid[currentColumn][currentRow] = 1;
@@ -217,7 +218,7 @@ function setup() {
   createButtonContainer();
   createSliders();
   columns = floor(w / nodeSize);
-  rows = floor(h / nodeSize);
+  rows = floor( (h - offsetY -offsetYFromBottom) / nodeSize);
   grid = makeArray(columns, rows);
   generateEmptyGrid();
 
@@ -248,7 +249,7 @@ function animateGrid() {
   for (let i = 0; i < columns; i++) {
     for (let j = 0; j < rows; j++) {
       let colPos = i * nodeSize;
-      let rowPos = j * nodeSize;
+      let rowPos = (j * nodeSize) + offsetY;
       if (grid[i][j] == 1) {
         fill(nodeColor)
         stroke(nodeStrokeColor);
