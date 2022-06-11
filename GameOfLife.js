@@ -11,6 +11,23 @@ let buttonContainer, sliderContainer;
 let buttonHeight = 25, buttonWidth = 100;
 let buttonContainerHeight = 100, buttonContainerWidth = 100;
 
+let backgroundColor, nodeColor, nodeStrokeColor, containerFillcolor;
+
+
+function setColors() {
+  nodeColor =
+    color(30,33,36);
+
+  nodeStrokeColor =
+    color(79, 95, 152);
+
+  backgroundColor =
+    color(66, 69, 73);
+
+  containerFillcolor = "#1e2124";
+}
+
+
 
 function getAnimationEmoji() {
   return `${!isAnimating ? "▶" : " | | "}`;
@@ -73,82 +90,87 @@ function generateRandomizedGrid() {
 }
 function createPlayPauseButton() {
   playPauseButton = createButton(getAnimationEmoji());
-  playPauseButton.position(buttonStartX, 50);
   playPauseButton.size(buttonWidth, buttonHeight);
-  playPauseButton.style('background-color', color(0));
-  playPauseButton.style('color', color(230));
-  playPauseButton.style('font-weight', 600);
-  playPauseButton.style('border-radius: 5px;');
   playPauseButton.mousePressed(toggleAnimation);
 }
 
 function createActionButton() {
   actionButton = createButton(getDrawEmoji());
-  actionButton.position(buttonStartX + 110, 50);
   actionButton.size(buttonWidth, buttonHeight);
-  actionButton.style('background-color', color(0));
-  actionButton.style('color', color(230));
-  actionButton.style('font-weight', 600);
-  actionButton.style('border-radius: 5px;');
   actionButton.mousePressed(toggleDraw);
 }
 
 function createEmptyButton() {
   emptyButton = createButton('⦰');
-  emptyButton.position(buttonStartX, 80);
   emptyButton.size(buttonWidth, buttonHeight);
-  emptyButton.style('background-color', color(0));
-  emptyButton.style('color', color(230));
-  emptyButton.style('font-weight', 600);
-  emptyButton.style('border-radius: 5px;');
   emptyButton.mousePressed(generateEmptyGrid);
 }
 function createRandomizeButton() {
   randomizeButton = createButton(getRandomButtonEmoji());
-  randomizeButton.position(buttonStartX + 110, 80);
   randomizeButton.size(buttonWidth, buttonHeight);
-  randomizeButton.style('background-color', color(0));
-  randomizeButton.style('color', color(230));
-  randomizeButton.style('font-weight', 600);
-  randomizeButton.style('border-radius: 5px;');
   randomizeButton.mousePressed(generateRandomizedGrid);
 }
 
 
 
 function createButtonContainer() {
-  let width = 250;
-  let height = 65;
-  let xPosition = w / 2 - width / 2;
-  let yPosition = 10;
-  buttonContainer = createButton("");
-  buttonContainer.position(xPosition, yPosition);
-  buttonContainer.size(width, height);
-  buttonContainer.style('background-color', color(40, 43, 48));
-  buttonContainer.style('color', color(230));
-  buttonContainer.style('font-weight', 600);
-  buttonContainer.style('border-radius: 5px;');
+  let buttonContainer = createDiv('');
+  playPauseButton.parent(buttonContainer);
+  emptyButton.parent(buttonContainer);
+  randomizeButton.parent(buttonContainer);
+  actionButton.parent(buttonContainer);
+  buttonContainer.position(0, 0);
+  let buttonContainerStyle = `
+  background-color: ${containerFillcolor};  
+  width: 100%;
+  height: max-content; 
+  padding: 10px; 
+  display: flex; 
+  justify-content: center;
+  `;
+
+
+  buttonContainer.style(buttonContainerStyle);
+
+
 }
 function createSliders() {
 
-  let width = floor(windowWidth) / 3;
-  let xPosition = w / 2 - width / 2;
-  sliderContainer = createButton("");
-  sliderContainer.position(xPosition - 10, h - 70);
-  sliderContainer.size(width + 20, 65);
-  sliderContainer.style('background-color', color(40, 43, 48));
-  sliderContainer.style('color', color(230));
-  sliderContainer.style('font-weight', 600);
-  sliderContainer.style('border-radius: 5px;');
+  let containerWidthPercentage = 80;
+  let xPosition = ((100 - containerWidthPercentage) / 2) * windowWidth * (1 / 100);
+
+  let LabelDivStyle = `
+  display: flex;
+  justify-content: space-between;
+  color: snow; 
+  text-align: center; 
+  font-weight: bold; 
+  background-color: ${containerFillcolor};  
+  height: max-content; 
+  padding: 5px;
+  width: ${containerWidthPercentage}%;
+  `;
+
+  let sliderStyle = `
+  width: 70%;
+  `;
+
+  let fpsLabel = createDiv('FPS : ');
+  fpsLabel.position(xPosition, h - 40);
+  fpsLabel.style(LabelDivStyle);
+
+  fpsSlider = createSlider(1, 60, fps);
+  fpsSlider.parent(fpsLabel);
+  fpsSlider.parent(fpsLabel);
+  fpsSlider.style(sliderStyle);
 
 
-  fpsSlider = createSlider(1, 60, 60);
-  fpsSlider.position(xPosition, h - 30);
-  fpsSlider.style('width', `${width}px`);
-
+  let randomizeLabel = createDiv('Density : ');
+  randomizeLabel.position(xPosition, h - 80);
+  randomizeLabel.style(LabelDivStyle);
   randomizeSlider = createSlider(1, 100, density);
-  randomizeSlider.position(xPosition, h - 60);
-  randomizeSlider.style('width', `${width}px`);
+  randomizeSlider.parent(randomizeLabel);
+  randomizeSlider.style(sliderStyle);
 
 }
 
@@ -179,21 +201,27 @@ function countSurroundingNodes(grid, columnPassed, rowPassed) {
 
 
 function setup() {
+
+
+
   h = windowHeight - 1;
   w = windowWidth - 1;
   var canvas = createCanvas(w, h);
+
+  setColors();
   canvas.style('display', 'block')
-  buttonStartX = w / 2 - 100;
-  createButtonContainer();
   createEmptyButton();
   createPlayPauseButton();
   createActionButton();
   createRandomizeButton();
+  createButtonContainer();
   createSliders();
   columns = floor(w / nodeSize);
   rows = floor(h / nodeSize);
   grid = makeArray(columns, rows);
   generateEmptyGrid();
+
+
 }
 
 
@@ -222,9 +250,8 @@ function animateGrid() {
       let colPos = i * nodeSize;
       let rowPos = j * nodeSize;
       if (grid[i][j] == 1) {
-        fill(62, 76, 89);
-        stroke(114, 137, 218);
-        stroke(40);
+        fill(nodeColor)
+        stroke(nodeStrokeColor);
         rect(colPos, rowPos, nodeSize - 1, nodeSize - 1);
       }
     }
@@ -234,10 +261,11 @@ function animateGrid() {
 
 function draw() {
 
-  frameRate(fpsSlider.value());
+  fps = fpsSlider.value()
+  frameRate(fps);
   density = randomizeSlider.value();
   randomizeButton.html(getRandomButtonEmoji());
-  background(25, 33, 41);
+  background(backgroundColor);
   animateGrid();
   if (isAnimating) executeGridUpdationLogic();
   updateGridFromInput();
