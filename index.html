@@ -27,13 +27,18 @@
       console.log('Ad Status: ' + status);
     }
 
+    function currentUserID()
+    {
+      return (Math.random() + "");
+    }
+
     var options = {                                     // Video Ad Options
       zoneId: 2050,
       accountId: 6992,                               // Required field for RMS                                                                               
       gameId: 5311,                                  // Required field for RMS
       adStatusCb: adStatusCallback,
       userId: currentUserID(),                      // Required field for RMS
-      custom: currentUserReward(),
+      // custom: currentUserReward(),
     };
     playBtn = document.getElementById("playButton");
     playBtn.onclick = function () {
