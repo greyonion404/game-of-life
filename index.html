@@ -24,16 +24,57 @@
 
   <!-- https://www.videosprofitnetwork.com/watch.xml?key=8fae0a21e5d1248a79307f36fd24575c -->
 
-  <script type="text/javascript">
-    atOptions = {
-      'key': '9c6184792470c8d928873e342101f0e5',
-      'format': 'iframe',
-      'height': 60,
-      'width': 468,
-      'params': {}
-    };
-    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.highperformancedisplayformat.com/9c6184792470c8d928873e342101f0e5/invoke.js"></scr' + 'ipt>');
-  </script>
+
+  <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+  <video id="video-id">
+    <source src="video.mp4" type="video/mp4" />
+    <script>
+      var myFP = fluidPlayer(
+        'video-id', {
+        "layoutControls": {
+          "controlBar": {
+            "autoHideTimeout": 3,
+            "animated": true,
+            "autoHide": true
+          },
+          "htmlOnPauseBlock": {
+            "html": null,
+            "height": null,
+            "width": null
+          },
+          "autoPlay": false,
+          "mute": true,
+          "allowTheatre": true,
+          "playPauseAnimation": false,
+          "playbackRateEnabled": false,
+          "allowDownload": false,
+          "playButtonShowing": false,
+          "fillToContainer": false,
+          "posterImage": ""
+        },
+        "vastOptions": {
+          "adList": [
+            {
+              "roll": "preRoll",
+              "vastTag": " https://www.videosprofitnetwork.com/watch.xml?key=8fae0a21e5d1248a79307f36fd24575c",
+              "adText": ""
+            },
+            {
+              "roll": "midRoll",
+              "vastTag": " https://www.videosprofitnetwork.com/watch.xml?key=8fae0a21e5d1248a79307f36fd24575c",
+              "adText": ""
+            },
+            {
+              "roll": "postRoll",
+              "vastTag": " https://www.videosprofitnetwork.com/watch.xml?key=8fae0a21e5d1248a79307f36fd24575c",
+              "adText": ""
+            }
+          ],
+          "adCTAText": false,
+          "adCTATextPosition": ""
+        }
+      });
+    </script>
 
 
 
