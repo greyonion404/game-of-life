@@ -27,8 +27,7 @@
       console.log('Ad Status: ' + status);
     }
 
-    function currentUserID()
-    {
+    function currentUserID() {
       return (Math.random() + "");
     }
 
@@ -38,7 +37,7 @@
       gameId: 5311,                                  // Required field for RMS
       adStatusCb: adStatusCallback,
       userId: currentUserID(),                      // Required field for RMS
-      // custom: currentUserReward(),
+      custom: { currentUserID: currentUserID() },
     };
     playBtn = document.getElementById("playButton");
     playBtn.onclick = function () {
