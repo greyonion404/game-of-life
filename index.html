@@ -12,8 +12,38 @@
 
 </head>
 
+
+
 <body>
   <script src="GameOfLife.js"></script>
+  <button type="button" id="playButton">Watch Video</button> // Create a button to initiate the video loading
+  <script type="text/javascript" src="https://cdn.applixir.com/applixir.sdk3.0m.js"></script> // Applixir SDK
+  <div id="applixir_vanishing_div" hidden>
+    <iframe id="applixir_parent" allow="autoplay"></iframe>
+  </div>
+
+  <script type="application/javascript">
+    function adStatusCallback(status) {                  // Status Callback Method
+      console.log('Ad Status: ' + status);
+    }
+
+    var options = {                                     // Video Ad Options
+      zoneId: 2050,
+      accountId: 6992,                               // Required field for RMS                                                                               
+      gameId: 5311,                                  // Required field for RMS
+      adStatusCb: adStatusCallback,
+      userId: currentUserID(),                      // Required field for RMS
+      custom: currentUserReward(),
+    };
+    playBtn = document.getElementById("playButton");
+    playBtn.onclick = function () {
+      invokeApplixirVideoUnit(options);     // Invoke Video ad
+    }
+  </script>
+
+
+
+
 </body>
 
 </html>
