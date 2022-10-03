@@ -1,0 +1,33 @@
+facebook.com, pub-8637246282765423, RESELLER, c3e20eee3f780d68
+appnexus.com, 10080, RESELLER, f5ab79cb980f11d1
+advertising.com, 7126, RESELLER, e1a5b5b6e3255540
+google.com, pub-8637246282765423, DIRECT, f08c47fec0942fa0
+advertising.com, 28571, RESELLER
+advertising.com, 28586, RESELLER
+yahoo.com, 55083, RESELLER
+openx.com, 540338038, RESELLER, 6a698e2ec38604c6
+openx.com, 540447827, RESELLER, 6a698e2ec38604c6
+pubmatic.com, 157530, RESELLER, 5d62403b186f2ace
+pubmatic.com, 158091, RESELLER, 5d62403b186f2ace
+sonobi.com, efb033eac1, DIRECT, d1a215d9eb5aee9e
+sonobi.com, 489d31688d, RESELLER, d1a215d9eb5aee9e
+rhythmone.com, 1059622079, RESELLER, a670c89d4a324e47
+contextweb.com, 560606, RESELLER, 89ff185a4c4e857c
+rhythmone.com, 3093722432, DIRECT, a670c89d4a324e47
+video.unrulymedia.com, 3093722432, DIRECT
+rhythmone.com, 2922715733, DIRECT, a670c89d4a324e47
+video.unrulymedia.com, 2922715733, DIRECT
+indexexchange.com, 182257, RESELLER
+appnexus.com, 6849, RESELLER
+rubiconproject.com, 15268, RESELLER
+spotxchange.com, 285547, RESELLER, 7842df1d2fe2db34
+spotx.tv, 285547, RESELLER, 7842df1d2fe2db34
+pubmatic.com, 159277, RESELLER, 5d62403b186f2ace
+advertising.com, 28605, RESELLER
+improvedigital.com, 1699, RESELLER
+sonobi.com, efb033eac1, DIRECT, d1a215d9eb5aee9e
+rhythmone.com, 1059622079, RESELLER, a670c89d4a324e47
+contextweb.com, 560606, RESELLER, 89ff185a4c4e857c
+
+
+#Applixir - last modified: 11/10/20
