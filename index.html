@@ -22,28 +22,18 @@
     <iframe id="applixir_parent" allow="autoplay"></iframe>
   </div>
 
-  <script type="application/javascript">
-    function adStatusCallback(status) {                  // Status Callback Method
-      console.log('Ad Status: ' + status);
-    }
+  <!-- https://www.videosprofitnetwork.com/watch.xml?key=8fae0a21e5d1248a79307f36fd24575c -->
 
-    function currentUserID() {
-      return (Math.random() + "");
-    }
-
-    var options = {                                     // Video Ad Options
-      zoneId: 2050,
-      accountId: 6992,                               // Required field for RMS                                                                               
-      gameId: 5311,           
-      fallback: 1,                       // Required field for RMS
-      adStatusCb: adStatusCallback,
+  <script type="text/javascript">
+    atOptions = {
+      'key': '9c6184792470c8d928873e342101f0e5',
+      'format': 'iframe',
+      'height': 60,
+      'width': 468,
+      'params': {}
     };
-    playBtn = document.getElementById("playButton");
-    playBtn.onclick = function () {
-      invokeApplixirVideoUnit(options);     // Invoke Video ad
-    }
+    document.write('<scr' + 'ipt type="text/javascript" src="http' + (location.protocol === 'https:' ? 's' : '') + '://www.highperformancedisplayformat.com/9c6184792470c8d928873e342101f0e5/invoke.js"></scr' + 'ipt>');
   </script>
-
 
 
 
